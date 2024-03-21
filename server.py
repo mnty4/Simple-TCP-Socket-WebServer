@@ -44,6 +44,7 @@ def main():
 
         except IOError as e:
             #Send response message for file not found
+            connectionSocket.send('HTTP/1.0 404 Bad Request\n\n'.encode())
             errorMessage = 'File could not be found'
             connectionSocket.send(errorMessage.encode())
         finally:
